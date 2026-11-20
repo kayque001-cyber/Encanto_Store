@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cantinho dos Achados – Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-barra">
+    <a class="marca" href="#" id="loja">Cantinho dos Achados</a>
+    <button class="carrinho" id="abrir" type="button" aria-label="Abrir meu pedido">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/>
+        <path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/>
+      </svg>
+      <span class="carrinho-txt">Pedido</span>
+      <span class="badge" id="badge" hidden>0</span>
+    </button>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Categorias"></nav>
+</header>
+
+<main>
+  <p class="intro">Escolha os produtos, monte seu pedido e envie direto no WhatsApp.</p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<div class="fundo" id="fundo"></div>
+<aside class="gaveta" id="gaveta" aria-label="Seu pedido">
+  <div class="gaveta-topo">
+    <h2>Seu pedido</h2>
+    <button class="fechar" id="fechar" type="button" aria-label="Fechar">×</button>
+  </div>
+  <ul class="lista" id="lista"></ul>
+  <div class="rodape">
+    <div class="total"><span>Total</span><span id="total"></span></div>
+    <button class="enviar" id="enviar" type="button">Enviar pedido no WhatsApp</button>
+    <button class="limpar" id="limpar" type="button">Esvaziar pedido</button>
+  </div>
+</aside>
+
+<script src="produtos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
