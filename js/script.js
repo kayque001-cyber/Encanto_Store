@@ -10,8 +10,10 @@ try { carrinho = JSON.parse(localStorage.getItem("carrinho") || "{}") || {}; } c
 const salvar = () => { try { localStorage.setItem("carrinho", JSON.stringify(carrinho)); } catch (e) {} };
 const chave = (id, tam) => id + "|" + (tam || "");
 
-document.title = CONFIG.loja + " – Catálogo";
-$("loja").textContent = CONFIG.loja;
+document.title = CONFIG.titulo || (CONFIG.loja + " – Catálogo");
+const texto = (id, t) => { const el = $(id); if (el) el.textContent = t; };
+texto("loja", CONFIG.loja);
+texto("frase", CONFIG.frase || "");
 
 function desenharTabs() {
   const ativas = CATEGORIAS.filter(c => PRODUTOS.some(p => p.categoria === c));

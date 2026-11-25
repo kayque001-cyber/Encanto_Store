@@ -1,18 +1,20 @@
 /* ===== É AQUI QUE VOCÊ MEXE PARA ADICIONAR OU MUDAR PRODUTOS ===== */
 
 const CONFIG = {
-  loja: "Brilho & Estilo",                          // nome na navbar
-  titulo: "Brilho & Estilo – Moda e Presentes",     // título da aba do navegador
-  frase: "Mais brilho, mais estilo, mais você.",    // frase de destaque no cabeçalho
+  loja: "Encanto Store",                          // nome na navbar
+  titulo: "Encanto Store – Peças que Encantam",     // título da aba do navegador
+  frase: "Peças lindas que fazem a diferença no seu dia.",    // frase de destaque no cabeçalho
   whatsapp: "5521982441637"   // 55 (Brasil) + 21 (DDD) + número
 };
 
-const CATEGORIAS = ["Relógios", "Chinelos/Farm", "Tapetes", "Natal","Tamanco"];
-const ICONES = { "Relógios": "⌚", "Chinelos": "🩴", "Tapetes": "🧶", "Natal": "🎄" };
+const CATEGORIAS = ["Relógios", "Chinelos/Farm", "Tapetes", "Tamanco", "Channel", "LV", "Cereja Charm"];
+const ICONES = { "Relógios": "⌚", "Chinelos/Farm": "🩴", "Tapetes": "🧶", "Natal": "🎄", "Tamanco": "👡" };
 
-/* Faixas de tamanho dos chinelos */
+/* Faixas de tamanho */
 const TAMANHOS_CHINELO = ["35-36", "37-38", "39-40"];
 const TAMANHOS_TAMANCO = ["33-34", "35-36", "37-38", "39-40"];
+const TAMANHOS_LV = ["34-35", "36-37", "38-39"]
+
 
 /* Detalhes que se repetem nos chinelos Farm */
 const DETALHES_FARM = [
@@ -27,13 +29,27 @@ const DETALHES_TAMANCO = [
   "Na caixinha unitária",
   "Em PVC Translúcido",
   "Leve e confortável",
-  "Saldo de 2,5 cm", 
+  "Salto de 2,5 cm",
   "Bico quadrado",
-  "Solado flexível" 
+  "Solado flexível"
+];
+
+const DETALHES_TAMANCOGEISE = [
+  "100%EVA",
+  "Leve e Confortável",
+  "Estiloso, Moderno e Sofisticado",
+  "Alta tendência no mercado"
+];
+const DETALHES_CerejaCharm =[
+  "100% EVA",
+  "Pingentes dourados",
+  "Super leve e macio",
+  "Design moderno e delicado",
+  "Qualidade premium"
 ]
 
 /* codigo: o número que aparece na foto (Farm 1, Farm 2...). O cliente pede por ele.
-   img: caminho da foto (ex.: "fotos/farm1.jpg"). Deixe "" para usar o ícone.
+   img: caminho da foto (ex.: "img/fotos/chinelos/farm1.jpeg"). Deixe "" para usar o ícone.
    tamanhos: lista de tamanhos para o cliente escolher (omita se não tiver).
    O id precisa ser único. Para cada estampa nova, copie a linha e mude id, codigo e img. */
 const PRODUTOS = [
@@ -55,7 +71,7 @@ const PRODUTOS = [
   { id: 16, codigo: "Farm 16", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm16.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 17, codigo: "Farm 17", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm17.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 18, codigo: "Farm 18", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm18.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
-  { id: 19, codigo: "Farm 19", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm19.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },  
+  { id: 19, codigo: "Farm 19", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm19.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 20, codigo: "Farm 20", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm20.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 21, codigo: "Farm 21", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm21.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 22, codigo: "Farm 22", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm22.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
@@ -64,5 +80,16 @@ const PRODUTOS = [
   { id: 25, codigo: "Farm 25", nome: "Havaianas Farm Top Color", preco: 40.00, categoria: "Chinelos/Farm", img: "img/fotos/chinelos/farm25.jpeg", tamanhos: TAMANHOS_CHINELO, detalhes: DETALHES_FARM },
   { id: 26, codigo: "Tamanco 1", nome: "Tamanco Jelly Gummy", preco: 80.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamanco1.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCO },
   { id: 27, codigo: "Tamanco 2", nome: "Tamanco Jelly Gummy", preco: 80.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamanco2.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCO },
-  { id: 28, codigo: "Tamanco 3", nome: "Tamanco Jelly Gummy", preco: 80.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamanco3.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCO }
+  { id: 28, codigo: "Tamanco 3", nome: "Tamanco Jelly Gummy", preco: 80.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamanco3.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCO },
+  { id: 29, codigo: "Tamanco 4", nome: "TAMANCO GEISE", preco: 75.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamancogeise1.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 30, codigo: "Tamanco 5", nome: "TAMANCO GEISE", preco: 75.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamancogeise2.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE},
+  { id: 31, codigo: "Tamanco 6", nome: "TAMANCO GEISE", preco: 75.00, categoria: "Tamanco", img: "img/fotos/chinelos/tamancogeise3.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 32, codigo: "Channel 1", nome: "Slide Channel", preco: 77.00, categoria: "Channel", img: "img/fotos/chinelos/slidechannel.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 33, codigo: "Channel 2", nome: "Slide Channel", preco: 77.00, categoria: "Channel", img: "img/fotos/chinelos/slidechannel2.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 34, codigo: "Channel 3", nome: "Slide Channel", preco: 77.00, categoria: "Channel", img: "img/fotos/chinelos/slidechannel3.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 35, codigo: "LV 1", nome: "LV", preco: 80.00, categoria: "LV", img: "img/fotos/chinelos/lvperfeito1.jpeg", tamanhos: TAMANHOS_LV, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 36, codigo: "LV 2", nome: "LV", preco: 80.00, categoria: "LV", img: "img/fotos/chinelos/lvperfeito2.jpeg", tamanhos: TAMANHOS_LV, detalhes: DETALHES_TAMANCOGEISE },
+  { id: 37, codigo: "Cereja 1", nome: "Cereja Charm", preco: 70.00, categoria: "Cereja Charm", img: "img/fotos/chinelos/cereja1.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_CerejaCharm },
+  { id: 38, codigo: "Cereja 2", nome: "Cereja Charm", preco: 70.00, categoria: "Cereja Charm", img: "img/fotos/chinelos/cereja2.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_CerejaCharm },
+  { id: 39, codigo: "Cereja 3", nome: "Cereja Charm", preco: 70.00, categoria: "Cereja Charm", img: "img/fotos/chinelos/cereja3.jpeg", tamanhos: TAMANHOS_TAMANCO, detalhes: DETALHES_CerejaCharm },
 ];

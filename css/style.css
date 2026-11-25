@@ -1,80 +1,100 @@
+/* =====================================================
+   ENCANTO STORE – visual: rosé, ameixa e dourado
+   Para mudar as cores do site inteiro, mexa só aqui:
+   ===================================================== */
 :root{
-  --bg:#F2F5F1; --card:#FFFFFF; --ink:#10261F; --muted:#5C6B64; --line:#D3DCD6;
-  --accent:#0E6B4F; --accent-ink:#FFFFFF; --mark:#FFD23F; --zap:#1FA855;
-  --proporcao:1 / 1;   /* formato de todas as fotos: 1 / 1 (quadrado), 4 / 5 (em pé), 3 / 4... */
+  --bg:#FBF4F2;          /* fundo da página (rosa bem clarinho) */
+  --card:#FFFFFF;
+  --ink:#3B1F2B;         /* texto e detalhes escuros (ameixa) */
+  --muted:#7A6670;
+  --line:#EBD9D6;
+  --accent:#A4566A;      /* rosé: botões e preços */
+  --accent-dark:#8A4457;
+  --accent-ink:#FFFFFF;
+  --gold:#B8924A;        /* dourado: detalhes */
+  --zap:#1FA855;         /* verde do WhatsApp */
+  --proporcao:1 / 1;     /* formato das fotos: 1 / 1, 4 / 5, 3 / 4... */
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
 /* ---------- Navbar ---------- */
-.topo{position:sticky;top:0;z-index:10;background:var(--ink);color:#fff}
-.topo-barra{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
-.marca{color:#fff;text-decoration:none;font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
-.carrinho{position:relative;display:flex;align-items:center;gap:8px;background:var(--mark);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;font-weight:600}
-.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--zap);color:#fff;font-size:.8rem;font-weight:800;display:grid;place-items:center;border:2px solid var(--ink)}
+.topo{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topo-barra{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.marca{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.8rem;line-height:1;color:var(--ink);text-decoration:none}
+.marca::before{content:"✦";color:var(--gold);font-style:normal;font-size:.7em;margin-right:.5em;vertical-align:.12em}
+.carrinho{position:relative;display:flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:9px 18px;font-weight:500;transition:background .2s}
+.carrinho:hover{background:var(--accent-dark)}
+.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--gold);color:var(--ink);font-size:.78rem;font-weight:600;display:grid;place-items:center;border:2px solid #fff}
 .badge[hidden]{display:none}
 
-.tabs{display:flex;gap:8px;max-width:1100px;margin:0 auto;padding:0 20px 12px;overflow-x:auto}
-.tab{border:1.5px solid #fff;background:transparent;color:#fff;border-radius:999px;padding:6px 16px;white-space:nowrap;font-weight:600}
-.tab[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.tabs{display:flex;gap:8px;max-width:1100px;margin:0 auto;padding:0 20px 14px;overflow-x:auto}
+.tab{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 18px;white-space:nowrap;font-weight:500;transition:background .2s,color .2s}
+.tab:hover{border-color:var(--accent)}
+.tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* ---------- Cabeçalho da página ---------- */
+main{max-width:1100px;margin:0 auto;padding:12px 20px 60px}
+.intro{margin:0 0 26px;padding:30px 0 0;text-align:center;color:var(--muted)}
+.intro br{display:none}
+.intro strong{display:block;margin-bottom:6px;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.15;color:var(--ink)}
+.intro::after{content:"";display:block;width:56px;height:2px;margin:18px auto 0;background:var(--gold)}
 
 /* ---------- Catálogo ---------- */
-main{max-width:1100px;margin:0 auto;padding:20px 20px 60px}
-.intro{margin:0 0 18px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.thumb{aspect-ratio:var(--proporcao);position:relative;overflow:hidden;display:grid;place-items:center;font-size:3.4rem;background:#E3ECE6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 28px rgba(59,31,43,.07);transition:transform .2s,box-shadow .2s}
+.item:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(59,31,43,.12)}
+.thumb{aspect-ratio:var(--proporcao);position:relative;overflow:hidden;display:grid;place-items:center;font-size:3.4rem;background:#F6E9E6}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
-.cat{font-size:.8rem;color:var(--muted)}
-.nome{font-weight:600;font-size:1.02rem}
-.preco{font-weight:800;font-size:1.25rem;margin-top:auto;padding-top:6px}
+.codigo{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);color:var(--ink);font-weight:600;font-size:.8rem;letter-spacing:.04em;padding:4px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(59,31,43,.15)}
+.info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.cat{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.nome{font-family:var(--serif);font-weight:600;font-size:1.3rem;line-height:1.2}
+.preco{font-weight:600;font-size:1.2rem;color:var(--accent);margin-top:auto;padding-top:6px}
 .detalhes{margin-top:6px;font-size:.88rem;color:var(--muted)}
-.detalhes summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.detalhes summary{cursor:pointer;font-weight:500;color:var(--accent);text-decoration:underline}
 .detalhes ul{margin:6px 0 0;padding-left:18px}
 .detalhes li{margin-bottom:3px}
-.add{margin-top:8px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);padding:10px;font-weight:600}
+.tamanhos{margin-top:8px;border-radius:8px}
+.tam-rot{display:block;font-size:.8rem;color:var(--muted);margin-bottom:4px}
+.tam-lista{display:flex;flex-wrap:wrap;gap:6px}
+.tam{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-size:.85rem;font-weight:500;transition:background .15s}
+.tam:hover{border-color:var(--accent)}
+.tam[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tamanhos.erro{outline:2px solid #C8372D;outline-offset:4px}
+.tamanhos.erro .tam-rot{color:#C8372D;font-weight:500}
+.tamanhos.erro .tam-rot::after{content:" – escolha um"}
+.add{margin-top:10px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);padding:11px;font-weight:500;letter-spacing:.02em;transition:background .2s}
+.add:hover{background:var(--accent-dark)}
 .add:active{transform:scale(.98)}
-.vazio{color:var(--muted);padding:40px 0}
+.vazio{color:var(--muted);padding:40px 0;text-align:center}
 
 /* ---------- Gaveta do pedido ---------- */
-.fundo{position:fixed;inset:0;background:rgba(16,38,31,.5);z-index:20;display:none}
+.fundo{position:fixed;inset:0;background:rgba(59,31,43,.45);z-index:20;display:none}
 .fundo.on{display:block}
 .gaveta{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:var(--card);z-index:30;display:none;flex-direction:column}
 .gaveta.on{display:flex}
 .gaveta-topo{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
-.gaveta h2{margin:0;font-size:1.3rem}
+.gaveta h2{margin:0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.7rem}
 .fechar{border:0;background:none;font-size:1.6rem;line-height:1;padding:4px 8px}
 .lista{flex:1;overflow:auto;padding:8px 20px;margin:0;list-style:none}
-.linha{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
-.linha .n{font-weight:600}
-.linha .p{font-weight:800;text-align:right}
+.linha{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.linha .n{font-weight:500}
+.linha .p{font-weight:600;color:var(--accent);text-align:right}
+.tam-linha{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
 .qtd{display:flex;align-items:center;gap:10px;grid-column:1/-1}
-.qtd button{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--ink);background:none;font-weight:800}
+.qtd button{width:32px;height:32px;border-radius:50%;border:1px solid var(--accent);background:none;color:var(--accent);font-weight:600}
+.qtd .remover{width:auto;height:auto;margin-left:auto;border:0;border-radius:0;padding:4px 2px;color:#C8372D;font-weight:500;font-size:.9rem;text-decoration:underline}
 .rodape{padding:16px 20px;border-top:1px solid var(--line)}
-.total{display:flex;justify-content:space-between;font-size:1.25rem;font-weight:800;margin-bottom:12px}
-.enviar{width:100%;border:0;border-radius:12px;background:var(--zap);color:#fff;padding:14px;font-weight:800;font-size:1.05rem}
+.total{display:flex;justify-content:space-between;font-size:1.3rem;font-weight:600;margin-bottom:12px}
+.enviar{width:100%;border:0;border-radius:12px;background:var(--zap);color:#fff;padding:14px;font-weight:600;font-size:1.05rem}
 .enviar:disabled{opacity:.4;cursor:not-allowed}
 .limpar{width:100%;margin-top:8px;border:0;background:none;color:var(--muted);text-decoration:underline;padding:8px}
 
 @media (max-width:420px){.carrinho-txt{display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add:active{transform:none}}
-
-/* ---------- Código na foto e tamanhos ---------- */
-.thumb{position:relative}
-.codigo{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-weight:800;font-size:.85rem;padding:3px 10px;border-radius:999px}
-.tamanhos{margin-top:8px;border-radius:8px}
-.tam-rot{display:block;font-size:.8rem;color:var(--muted);margin-bottom:4px}
-.tam-lista{display:flex;flex-wrap:wrap;gap:6px}
-.tam{border:1.5px solid var(--ink);background:transparent;border-radius:8px;padding:4px 9px;font-size:.85rem;font-weight:600}
-.tam[aria-pressed="true"]{background:var(--ink);color:#fff}
-.tamanhos.erro{outline:2px solid #C8372D;outline-offset:4px}
-.tamanhos.erro .tam-rot{color:#C8372D;font-weight:600}
-.tamanhos.erro .tam-rot::after{content:" – escolha um";}
-.tam-linha{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
-
-/* ---------- Remover item do pedido ---------- */
-.qtd .remover{width:auto;height:auto;margin-left:auto;border:0;padding:4px 2px;color:#C8372D;font-weight:600;font-size:.9rem;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.item,.item:hover,.add:active{transform:none;transition:none}}
